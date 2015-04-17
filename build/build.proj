@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RootPath>$(MSBuildProjectDirectory)\..</RootPath>
+    <SourcePath>$(RootPath)\src</SourcePath>
+    <PackagesDirectory>$(MSBuildProjectDirectory)\packages</PackagesDirectory>
+    <ExtensionTasksPath>$(PackagesDirectory)\MSBuild.Extension.Pack.1.5.0\tools\net40\</ExtensionTasksPath>
+  </PropertyGroup>
+  <Import Project="$(ExtensionTasksPath)MSBuild.ExtensionPack.tasks"/>
+  
+  <Target Name="Build">
+    <MSBuild.ExtensionPack.FileSystem.Folder  TaskAction="RemoveContent" Path="$(MSBuildProjectDirectory)\output\systemclock" Condition="Exists('$(MSBuildProjectDirectory)\output\systemclock')"/>
+  	<RemoveDir ContinueOnError="false" Directories="$(MSBuildProjectDirectory)\output\systemclock" Condition="Exists('$(MSBuildProjectDirectory)\output\systemclock')" />
+    <MakeDir ContinueOnError="false" Directories="$(MSBuildProjectDirectory)\output\systemclock" />
+    
+    <MSBuild Projects="$(SourcePath)\SystemClock\SystemClock.csproj"
+		 StopOnFirstFailure="true"
+		 Properties="Configuration=Release;OutputPath=$(MSBuildProjectDirectory)\output\systemclock" />
+  </Target>
+</Project>

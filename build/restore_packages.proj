@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Project DefaultTargets="Run" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RootPath>$(MSBuildProjectDirectory)\..</RootPath>
+    <NuGetExe Condition="$(NuGetExe) == ''">$(RootPath)\.nuget\nuget.exe</NuGetExe>
+  </PropertyGroup>
+
+  <Target Name="Run">
+    <CallTarget Targets="RestorePackages" />
+  </Target>
+
+  <Target Name="UpdateNuGet">
+    <Exec Command='&quot;$(NuGetExe)&quot; update -self' />
+  </Target>
+
+  <Target Name="RestorePackages">
+    <ItemGroup>
+      <BuildPackageConfigs Include="$(RootPath)\build\packages.config" />
+      <SourcePackageConfigs Include="$(RootPath)\Source\**\packages.config" />
+    </ItemGroup>
+    <Exec Command='&quot;$(NuGetExe)&quot; install &quot;%(BuildPackageConfigs.Identity)&quot; -o "$(RootPath)\build\packages" -Verbosity detailed' /> 
+  </Target>
+</Project>
