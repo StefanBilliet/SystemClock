@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PackagesPath>$(MSBuildProjectDirectory)\packages</PackagesPath>
+    <NuspecPath>$(MSBuildProjectDirectory)\nuspec</NuspecPath>
+    <NuGetExe>$(MSBuildProjectDirectory)\..\.nuget\nuget.exe</NuGetExe>
+    <MSBuildCommunityTasksPath>$(PackagesPath)\MSBuildTasks.1.4.0.88\tools</MSBuildCommunityTasksPath>	
+  </PropertyGroup>
+  <Import Project="$(MSBuildCommunityTasksPath)\MSBuild.Community.Tasks.Targets"/>
+
+  <Target Name="Pack">    
+		<Version 
+      VersionFile="$(NuspecPath)\master_version.txt" 
+      MajorType="None" 
+      MinorType="None" 
+      BuildType="None" 
+      RevisionType="None">
+      <Output TaskParameter="Major" PropertyName="Major"/>
+      <Output TaskParameter="Minor" PropertyName="Minor"/>
+      <Output TaskParameter="Build" PropertyName="Build"/>
+    </Version>
+
+    <XmlUpdate
+      Prefix="ns"
+      Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
+      XmlFileName="$(NuspecPath)\SystemClock.nuspec"
+      XPath="/ns:package/ns:metadata/ns:version"
+      Value="$(Major).$(Minor).$(Build)" />
+
+    <Exec Command='$(NuGetExe) pack $(NuspecPath)\SystemClock.nuspec -Version $(Major).$(Minor).$(Build) -NonInteractive -o "$(MSBuildProjectDirectory)\output"' />
+  </Target>
+</Project>

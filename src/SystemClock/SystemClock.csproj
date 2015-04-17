@@ -7,7 +7,7 @@
     <ProjectGuid>{3D3B9F2C-2F1E-4406-B99D-46B5E170ABFD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SystemClock</RootNamespace>
+    <RootNamespace>System.Clock</RootNamespace>
     <AssemblyName>SystemClock</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

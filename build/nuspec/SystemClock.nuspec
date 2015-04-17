@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SystemClock</id>
+    <version>0.0.2</version>
+    <title>SystemClock</title>
+    <authors>Stefan Billiet</authors>
+    <licenseUrl>https://raw.githubusercontent.com/StefanBilliet/SystemClock/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/StefanBilliet/SystemClock</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An attempt at an async/thread safe implementation of a testable .NET clock.</description>
+  </metadata>
+  <files>
+    <file src="..\output\systemclock\SystemClock.dll" target="lib\net451\SystemClock.dll" />
+    <file src="..\output\systemclock\SystemClock.pdb" target="lib\net451\SystemClock.pdb" />
+  </files>
+</package>

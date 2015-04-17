@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Runtime.Remoting.Messaging;
 
-namespace SystemClock {
+namespace System.Clock {
   /// <summary>
   /// Delegates to CallContext.LogicalGetData and .LogicalSetData, as this is the Task-aware way to
   /// get the equivalent of thread local storage.
