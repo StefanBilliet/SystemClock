@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemClock", "SystemClock\SystemClock.csproj", "{3D3B9F2C-2F1E-4406-B99D-46B5E170ABFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemClock.Tests", "SystemClock.Tests\SystemClock.Tests.csproj", "{8C983BF5-25C6-4A1D-B47B-D3567236B112}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3D3B9F2C-2F1E-4406-B99D-46B5E170ABFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D3B9F2C-2F1E-4406-B99D-46B5E170ABFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D3B9F2C-2F1E-4406-B99D-46B5E170ABFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C983BF5-25C6-4A1D-B47B-D3567236B112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C983BF5-25C6-4A1D-B47B-D3567236B112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C983BF5-25C6-4A1D-B47B-D3567236B112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C983BF5-25C6-4A1D-B47B-D3567236B112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
