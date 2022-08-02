@@ -2,5 +2,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>default</LangVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Title>SystemClock</Title>
+    <Authors>Stefan Billiet</Authors>
   </PropertyGroup>
 </Project>
