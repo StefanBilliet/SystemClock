@@ -1,31 +1,33 @@
 using System;
-using System.Clock;
 using System.Linq;
+using System.Threading;
 
 namespace SystemClock
 {
     public static class Clock
     {
-        private static readonly RobustThreadLocal<Func<DateTimeOffset>> GetDateTimeOffset =
-            new RobustThreadLocal<Func<DateTimeOffset>>(() => () => DateTimeOffset.Now);
+        private static readonly AsyncLocal<Func<DateTime>> NowProvider = new();
 
-        public static DateTimeOffset Today => GetDateTimeOffset.Value().Date;
+        /// <inheritdoc cref="System.DateTime.Today"/>
+        public static DateTime Today => Now.Date;
 
-        public static DateTimeOffset Now => GetDateTimeOffset.Value();
+        /// <inheritdoc cref="System.DateTime.Now"/>
+        public static DateTime Now => NowProvider.Value?.Invoke() ?? DateTime.Now;
 
-        public static DateTimeOffset UtcNow => GetDateTimeOffset.Value().ToUniversalTime();
+        /// <inheritdoc cref="System.DateTime.UtcNow"/>
+        public static DateTime UtcNow => Now.ToUniversalTime();
         
         /// <summary>
         /// Sets a fixed (deterministic) time for the current thread to return by <see cref="Clock"/>.
         /// </summary>
         public static void Set(DateTime time)
         {
-            if (new[] { DateTimeKind.Local, DateTimeKind.Unspecified }.All(kind => kind != time.Kind))
+            if (new[] {DateTimeKind.Local, DateTimeKind.Unspecified}.All(kind => kind != time.Kind))
             {
                 time = time.ToLocalTime();
             }
 
-            GetDateTimeOffset.Value = () => time;
+            NowProvider.Value = () => time;
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace SystemClock
         /// </summary>
         public static void Reset()
         {
-            GetDateTimeOffset.Value = () => DateTime.Now;
+            NowProvider.Value = () => DateTime.Now;
         }
     }
 }
